@@ -78,7 +78,6 @@ picture { display: contents; }
 .nav-wrap.is-filled .nav-bar { background: var(--cream); box-shadow: 0 2px 7px 0 rgba(18, 18, 18, .1); }
 body.menu-open .nav-bar { background: transparent; box-shadow: none; }
 .logo { display: inline-flex; align-items: center; height: 44px; color: var(--red); font: 700 26px/1 var(--kanit); letter-spacing: -.03em; white-space: nowrap; }
-.logo-o { width: .8em; height: .8em; margin: 0 .03em 0 .26em; }
 .nav-actions { display: flex; align-items: center; gap: 10px; }
 .burger { position: relative; width: 52px; height: 52px; border-radius: 50%; background: var(--ink); overflow: hidden; }
 .bar { position: absolute; top: 50%; left: 50%; width: 18px; height: 2px; margin: -1px 0 0 -9px; background: #fff; transition: transform .35s var(--spring), width .35s var(--spring), opacity .2s; }
