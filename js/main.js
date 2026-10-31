@@ -292,9 +292,18 @@
     clearInterval(timer);
     if (reduced) return;
     timer = setInterval(() => {
-      if (!sliderHover && !swipe && sliderVisible && !document.hidden) go(1);
+      if (!sliderHover && !swipe && sliderVisible && !document.hidden && ready(slides[(current + 1) % slides.length])) go(1);
     }, 3000);
   };
+  // Autoplay never brings in a card whose photo is still downloading.
+  const ready = slide => [...slide.querySelectorAll('img')].every(img => img.complete);
+  // The off-screen slides are clipped, so lazy loading would only fetch their ~400 KB photos
+  // once they slide in, leaving an empty card on a phone connection. Fetch them ahead of time.
+  new IntersectionObserver((entries, io) => {
+    if (!entries.some(e => e.isIntersecting)) return;
+    io.disconnect();
+    slider.querySelectorAll('img[loading="lazy"]').forEach(img => { img.loading = 'eager'; });
+  }, { rootMargin: '1500px' }).observe(slider);
   slider.querySelector('.slider-prev').addEventListener('click', () => go(-1));
   slider.querySelector('.slider-next').addEventListener('click', () => go(1));
   dots.forEach((d, i) => d.addEventListener('click', () => {
