@@ -326,4 +326,65 @@
   };
   box.addEventListener('pointerup', endDrag);
   box.addEventListener('pointercancel', endDrag);
+
+  /* Tape ribbons */
+  document.querySelectorAll('[data-ribbon]').forEach(track => {
+    const words = track.dataset.ribbon.split('|');
+    const star = '<svg><use href="#i-oven"/></svg>';
+    const row = words.map(w => `<span>${w}${star}</span>`).join('');
+    track.innerHTML = row.repeat(6);
+  });
+
+  /* Opening hours: the single source for the footer and the visit section.
+     Sample hours and a placeholder time zone until the client confirms the real
+     ones. Times are 24-hour, and a closed day is null. Index 0 is Sunday. */
+  const TIME_ZONE = 'America/New_York';
+  const HOURS = [[12, 20], [11, 21], [11, 21], [11, 21], [11, 21], [11, 23], [11, 23]];
+  const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const formatHour = hour => {
+    const whole = Math.floor(hour);
+    const mins = Math.round((hour - whole) * 60);
+    const display = whole % 12 || 12;
+    return `${display}${mins ? `:${String(mins).padStart(2, '0')}` : ''} ${whole < 12 || whole === 24 ? 'AM' : 'PM'}`;
+  };
+  const scheduleStatus = (now, hours = HOURS, timeZone = TIME_ZONE) => {
+    const parts = {};
+    new Intl.DateTimeFormat('en-US', { timeZone, weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+      .formatToParts(now).forEach(p => { parts[p.type] = p.value; });
+    const day = DAY_NAMES.indexOf(parts.weekday);
+    const time = +parts.hour + +parts.minute / 60;
+    const today = hours[day];
+    if (today && time >= today[0] && time < today[1]) return { open: true, day, text: `Open now · closes ${formatHour(today[1])}` };
+    if (today && time < today[0]) return { open: false, day, text: `Opens today at ${formatHour(today[0])}` };
+    for (let ahead = 1; ahead <= 7; ahead++) {
+      const next = hours[(day + ahead) % 7];
+      if (next) return { open: false, day, text: `Opens ${ahead === 1 ? 'tomorrow' : DAY_NAMES[(day + ahead) % 7]} at ${formatHour(next[0])}` };
+    }
+    return { open: false, day, text: 'Closed for now' };
+  };
+  const hourGroups = () => {
+    const groups = [];
+    [1, 2, 3, 4, 5, 6, 0].forEach(day => {
+      const hours = HOURS[day];
+      const last = groups[groups.length - 1];
+      if (last && String(last.hours) === String(hours)) last.days.push(day);
+      else groups.push({ hours, days: [day] });
+    });
+    return groups.map(({ hours, days }) => ({
+      days,
+      label: days.length > 1 ? `${DAY_NAMES[days[0]]} to ${DAY_NAMES[days[days.length - 1]]}` : DAY_NAMES[days[0]],
+      time: hours ? `${formatHour(hours[0])} – ${formatHour(hours[1])}` : 'Closed'
+    }));
+  };
+  document.getElementById('footerHours').innerHTML = hourGroups().map(g => `<li>${g.label}: ${g.time}</li>`).join('');
+  const renderStatus = () => {
+    const status = scheduleStatus(new Date());
+    const line = document.getElementById('ovenStatus');
+    line.textContent = status.text;
+    line.classList.toggle('is-resting', !status.open);
+    document.getElementById('oven').classList.toggle('is-resting', !status.open);
+    document.getElementById('visitHours').innerHTML = hourGroups().map(g => `<li${g.days.includes(status.day) ? ' class="is-today"' : ''}><b>${g.label}</b>${g.time}</li>`).join('');
+  };
+  renderStatus();
+  setInterval(renderStatus, 60000);
 })();

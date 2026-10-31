@@ -11,9 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Geist+Mono:wght@400;500&family=Geist:wght@500&family=Instrument+Serif:ital@0;1&family=Inter:wght@700&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add('js')</script>
-<script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
-</script>
 </head>
 <body>
 
@@ -28,7 +25,7 @@
   <header class="nav-bar">
     <a class="logo" href="#" aria-label="Stones Oven Pizzaria home">STONES <svg class="logo-o" aria-hidden="true"><use href="#i-oven"/></svg>VEN.</a>
     <div class="nav-actions">
-      <a class="btn btn-white nav-cta" href="#"><span>Contact Us</span></a>
+      <a class="btn btn-white nav-cta" href="#visit"><span>Contact Us</span></a>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="overlay">
         <i class="bar bar-top"></i><i class="bar bar-mid"></i><i class="bar bar-bot"></i>
       </button>
@@ -42,16 +39,14 @@
     <div class="overlay-main">
       <nav class="overlay-links" aria-label="Main">
         <a class="is-current" href="#" data-img="0">Home</a>
-        <a href="#" data-img="1">About</a>
-        <a href="#" data-img="2">Menu</a>
-        <a href="#" data-img="3">Blog</a>
+        <a href="#explore" data-img="1">Menu</a>
+        <a href="#visit" data-img="2">Visit</a>
       </nav>
       <div class="overlay-side">
         <div class="overlay-images">
           <img class="is-on" src="https://framerusercontent.com/images/W9cvS8M7EvWdSr4r088BW4qpOdA.png?scale-down-to=1024" alt="" loading="lazy">
           <img src="https://framerusercontent.com/images/F55wDZH99PuVv3pmbYVCxdP91o.png?scale-down-to=1024" alt="" loading="lazy">
           <img src="https://framerusercontent.com/images/RIqnvz61CVXGBcQcChSZHlsbCGs.jpg?scale-down-to=1024" alt="" loading="lazy">
-          <img src="https://framerusercontent.com/images/BqedyDdfSyq2QxN2IvF626o.jpg?scale-down-to=1024" alt="" loading="lazy">
         </div>
         <div class="overlay-social">
           <a href="#">Instagram</a>
@@ -96,12 +91,18 @@
           <h1 class="h1" data-chars>Baked on Hot Stone Daily</h1>
           <p class="body muted">Blistered crusts, bright sauce, and fresh toppings, right out of the oven.</p>
         </div>
-        <a class="btn btn-red" href="#"><span>See the Menu</span></a>
+        <a class="btn btn-red" href="#explore"><span>See the Menu</span></a>
       </div>
     </div>
   </section>
 
   <figure class="separator"><img src="https://framerusercontent.com/images/kHred7qIsH9usH44Kkxk4wyrcu8.svg" alt=""></figure>
+
+  <div class="ribbons" aria-hidden="true">
+    <div class="ribbon ribbon-a"><div class="ribbon-track" data-ribbon="Hot Stone|Crisp Crust|Bright Sauce|Melty Cheese"></div></div>
+    <div class="ribbon ribbon-b"><div class="ribbon-track" data-ribbon="Fresh Toppings|Blistered Edges|Stretched by Hand|Out of the Oven"></div></div>
+  </div>
+
 
   <!-- Behind the slice -->
   <section class="behind">
@@ -233,11 +234,6 @@
 
   <figure class="separator"><img src="https://framerusercontent.com/images/kHred7qIsH9usH44Kkxk4wyrcu8.svg" alt=""></figure>
 
-  <!-- 3D -->
-  <section class="three">
-    <div class="three-canvas" id="three" role="img" aria-label="Stones Oven 3D lettering"></div>
-  </section>
-
   <!-- Our approach -->
   <section class="approach">
     <div class="approach-inner">
@@ -367,6 +363,43 @@
     </div>
   </section>
 
+  <!-- Visit -->
+  <section class="visit" id="visit">
+    <div class="heading heading-visit">
+      <p class="tag tag-dark"><i></i>Visit Us</p>
+      <h2 class="h2" data-chars>Come Say Hi to the Oven</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="oven-panel" data-reveal="left">
+        <img class="oven-photo" id="oven" src="assets/visit-oven.webp" alt="A stone pizza oven at night with flames burning inside and two pizzas baking, a long metal peel resting on the ledge" width="900" height="1200" loading="lazy">
+        <p class="oven-status" id="ovenStatus" aria-live="polite"></p>
+      </div>
+      <div class="visit-tickets">
+        <div class="ticket-wrap ticket-hours" data-reveal="up">
+          <div class="ticket">
+            <p class="ticket-kicker">Oven hours</p>
+            <ul class="visit-hours" id="visitHours"></ul>
+          </div>
+        </div>
+        <div class="ticket-wrap ticket-find" data-reveal="up">
+          <div class="ticket">
+            <p class="ticket-kicker">Find us</p>
+            <div class="map-placeholder" role="img" aria-label="Map placeholder"><span>Map goes here</span></div>
+            <p class="ticket-line-big">Street Address, City, State</p>
+            <a class="ticket-link" href="#">Get directions</a>
+          </div>
+        </div>
+        <div class="ticket-wrap ticket-call" data-reveal="up">
+          <div class="ticket">
+            <p class="ticket-kicker">Call the kitchen</p>
+            <p class="ticket-line-big"><a href="tel:+10000000000">(000) 000-0000</a></p>
+            <a class="ticket-link" href="mailto:hello@stonesoven.example">hello@stonesoven.example</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta" id="cta">
     <figure class="jag jag-cta"><img src="https://framerusercontent.com/images/uQrERpS5Q9rvLvw0w5di2MpD2g.svg" alt=""></figure>
@@ -418,10 +451,9 @@
             <ul>
               <li><a class="is-current" href="#">Home</a></li>
               <li><a href="#">Our Story</a></li>
-              <li><a href="#">Menu</a></li>
+              <li><a href="#explore">Menu</a></li>
               <li><a href="#">Stories</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Order Online</a></li>
+              <li><a href="#visit">Contact</a></li>
             </ul>
           </div>
           <div class="footer-col footer-legal">
@@ -440,11 +472,7 @@
           <div class="footer-col footer-schedule">
             <div>
               <h3>Schedule</h3>
-              <ul>
-                <li>Mon to Thu: 11 AM – 9 PM</li>
-                <li>Fri to Sat: 11 AM – 11 PM</li>
-                <li>Sun: 12 PM – 8 PM</li>
-              </ul>
+              <ul id="footerHours"></ul>
             </div>
             <div class="footer-small">
               <p>© 2026 Stones Oven Pizzaria.</p>
@@ -458,6 +486,5 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script type="module" src="js/model3d.js"></script>
 </body>
 </html>
