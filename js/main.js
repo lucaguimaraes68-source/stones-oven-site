@@ -39,7 +39,8 @@
     link.addEventListener('click', () => setMenu(false));
   });
 
-  /* Tickers: 50px/s, half speed on hover, paused off screen */
+  /* Tickers: 75px/s, half speed on hover, paused off screen */
+  const TICKER_SPEED = 75;
   document.querySelectorAll('[data-ticker]').forEach(ticker => {
     const track = ticker.querySelector('.ticker-track');
     const first = track.firstElementChild;
@@ -56,7 +57,7 @@
       last = t;
       factor += (target - factor) * Math.min(dt * 6, 1);
       const loop = first.offsetWidth + parseFloat(getComputedStyle(track).columnGap);
-      x = (x + 50 * factor * dt) % loop;
+      x = (x + TICKER_SPEED * factor * dt) % loop;
       track.style.transform = `translate3d(${-x}px,0,0)`;
       if (visible) requestAnimationFrame(step);
     };
