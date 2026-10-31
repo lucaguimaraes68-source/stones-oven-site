@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stones Oven Pizzaria | Stone-Baked Pizza</title>
+<meta name="description" content="Stones Oven Pizzaria serves stone-baked pizza with blistered crusts, bright sauce, and fresh toppings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://framerusercontent.com">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Geist+Mono:wght@400;500&family=Geist:wght@500&family=Instrument+Serif:ital@0;1&family=Inter:wght@700&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js')</script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 22 22"><path fill="currentColor" d="M12.375 2.75 10.313 4.813l4.812 4.812H1.375v2.75h13.75l-4.812 4.813 2.062 2.062L20.625 11Z"/></symbol>
+  <symbol id="i-oven" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22Zm0 3.2a7.8 7.8 0 1 1 0 15.6 7.8 7.8 0 0 1 0-15.6Z"/><path fill="currentColor" d="M12.4 6.5c.4 2.2-2.9 3.8-2.9 6.9 0 1.9 1.3 3.2 2.7 3.2s2.8-1.2 2.8-3.1c0-1.2-.6-2.1-1.1-2.7-.1.7-.4 1.2-.9 1.4.3-2.1-.1-4.3-.6-5.7Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 18 18"><path fill="#ca2f06" d="M17.92 6.509 11.563 5.837 8.96 0 6.357 5.837 0 6.509l4.749 4.28-1.326 6.252 5.537-3.193 5.537 3.193-1.326-6.252Z"/></symbol>
+</svg>
+
+<!-- Header -->
+<div class="nav-wrap" id="nav">
+  <header class="nav-bar">
+    <a class="logo" href="#" aria-label="Stones Oven Pizzaria home">STONES <svg class="logo-o" aria-hidden="true"><use href="#i-oven"/></svg>VEN.</a>
+    <div class="nav-actions">
+      <a class="btn btn-white nav-cta" href="#"><span>Contact Us</span></a>
+      <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="overlay">
+        <i class="bar bar-top"></i><i class="bar bar-mid"></i><i class="bar bar-bot"></i>
+      </button>
+    </div>
+  </header>
+</div>
+
+<!-- Menu overlay -->
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="overlay-inner">
+    <div class="overlay-main">
+      <nav class="overlay-links" aria-label="Main">
+        <a class="is-current" href="#" data-img="0">Home</a>
+        <a href="#" data-img="1">About</a>
+        <a href="#" data-img="2">Menu</a>
+        <a href="#" data-img="3">Blog</a>
+      </nav>
+      <div class="overlay-side">
+        <div class="overlay-images">
+          <img class="is-on" src="https://framerusercontent.com/images/W9cvS8M7EvWdSr4r088BW4qpOdA.png?scale-down-to=1024" alt="" loading="lazy">
+          <img src="https://framerusercontent.com/images/F55wDZH99PuVv3pmbYVCxdP91o.png?scale-down-to=1024" alt="" loading="lazy">
+          <img src="https://framerusercontent.com/images/RIqnvz61CVXGBcQcChSZHlsbCGs.jpg?scale-down-to=1024" alt="" loading="lazy">
+          <img src="https://framerusercontent.com/images/BqedyDdfSyq2QxN2IvF626o.jpg?scale-down-to=1024" alt="" loading="lazy">
+        </div>
+        <div class="overlay-social">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Google</a>
+          <a href="#">Yelp</a>
+        </div>
+      </div>
+    </div>
+    <p class="overlay-copy">© 2026 Stones Oven Pizzaria. All Rights Reserved</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <figure class="fill"><img src="https://framerusercontent.com/images/qBKTp7xW70Swl7xJmXecgr4k2a0.png" alt="" fetchpriority="high"></figure>
+    <div class="ticker" data-ticker role="img" aria-label="Stone baked">
+      <ul class="ticker-track">
+        <li>STONE<img src="https://framerusercontent.com/images/2ugNSGgJgu79pYUFdxTfbSShNhs.png?scale-down-to=1024" alt="">BAKED</li>
+      </ul>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-cards" id="heroCards">
+        <a class="hero-card is-on" href="#">
+          <span class="hero-card-img"><img src="https://framerusercontent.com/images/aDhjTebJLF4kFgiur4Rb2dmc.jpg?scale-down-to=1024" alt="A slice of pizza being lifted from a pie"></span>
+          <span class="hero-card-meta"><b>Four Cheese Pull</b><strong>$17</strong></span>
+        </a>
+        <a class="hero-card" href="#">
+          <span class="hero-card-img"><img src="https://framerusercontent.com/images/KPB0sUOeKgynOIx812bchnMXTw.png?scale-down-to=1024" alt="A thick crust pizza on a table"></span>
+          <span class="hero-card-meta"><b>Fresh Mozzarella</b><strong>$16</strong></span>
+        </a>
+        <a class="hero-card" href="#">
+          <span class="hero-card-img"><img src="https://framerusercontent.com/images/HkR5BifDLPe7PxC66kVpO38UUs.png?scale-down-to=1024" alt="A pizza with tomatoes and green toppings"></span>
+          <span class="hero-card-meta"><b>Pepperoni &amp; Ham</b><strong>$18</strong></span>
+        </a>
+      </div>
+      <div class="hero-text">
+        <p class="tag tag-dark"><i></i>Stone Baked</p>
+        <div class="hero-copy">
+          <h1 class="h1" data-chars>Baked on Hot Stone Daily</h1>
+          <p class="body muted">Blistered crusts, bright sauce, and fresh toppings, right out of the oven.</p>
+        </div>
+        <a class="btn btn-red" href="#"><span>See the Menu</span></a>
+      </div>
+    </div>
+  </section>
+
+  <figure class="separator"><img src="https://framerusercontent.com/images/kHred7qIsH9usH44Kkxk4wyrcu8.svg" alt=""></figure>
+
+  <!-- Behind the slice -->
+  <section class="behind">
+    <figure class="fill"><img src="https://framerusercontent.com/images/2hG0hXTAULyzs6JDRmQK0JhU4Lc.png" alt="" loading="lazy"></figure>
+    <figure class="jag jag-bottom"><img src="https://framerusercontent.com/images/L1xVvXZt3gtK1tyiVlYaUHXL4.svg" alt=""></figure>
+    <div class="behind-inner">
+      <div class="heading heading-behind">
+        <p class="tag tag-light"><i></i>From Our Oven</p>
+        <h2 class="h2 light" data-chars>Every Great Pizza Starts on Hot Stone</h2>
+      </div>
+      <div class="behind-grid">
+        <figure class="behind-img" data-reveal="left"><img src="https://framerusercontent.com/images/zFNbGdVC1xhpQu0ooEQJJqq6jcU.png?scale-down-to=1024" alt="Friends sharing pizza from an open box" loading="lazy"></figure>
+        <div class="stats">
+          <div class="stat" data-reveal="up">
+            <img class="stat-bg" src="https://framerusercontent.com/images/lShlEv8NZswuBCIVM43X7m0iHI.png" alt="" loading="lazy">
+            <span class="odo" data-odo="10,000" aria-label="10,000+"></span>
+            <p class="stat-label">Pizzas Served</p>
+          </div>
+          <div class="stat" data-reveal="up">
+            <img class="stat-bg" src="https://framerusercontent.com/images/lShlEv8NZswuBCIVM43X7m0iHI.png" alt="" loading="lazy">
+            <span class="odo" data-odo="5,000" aria-label="5,000+"></span>
+            <p class="stat-label">Happy Customers</p>
+          </div>
+          <div class="stat" data-reveal="up">
+            <img class="stat-bg" src="https://framerusercontent.com/images/lShlEv8NZswuBCIVM43X7m0iHI.png" alt="" loading="lazy">
+            <span class="odo" data-odo="15" aria-label="15+"></span>
+            <p class="stat-label">Expert Chefs</p>
+          </div>
+        </div>
+        <figure class="behind-img" data-reveal="right"><img src="https://framerusercontent.com/images/c5YywwehmDE2CyAUj5JplnXWU8.jpg?scale-down-to=1024" alt="A pizza surrounded by fresh vegetables" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newly added -->
+  <section class="newly" id="newly">
+    <div class="newly-left">
+      <div class="heading heading-left">
+        <p class="tag tag-dark"><i></i>New on the Menu</p>
+        <h2 class="h2" data-chars>Try Our Newest Pizzas</h2>
+      </div>
+      <div class="newly-items">
+        <div class="newly-slot">
+          <article class="item is-active" data-pizza="0">
+            <img class="item-border" src="https://framerusercontent.com/images/qWn3RyqP5hrdFw27Uxz28d337Ow.svg" alt="" loading="lazy">
+            <img class="item-fill" src="https://framerusercontent.com/images/B2fgopjRfPBelBpVrkbTqCuEA.svg" alt="" loading="lazy">
+            <div class="item-content">
+              <div class="item-head">
+                <h3 class="item-name"><img src="https://framerusercontent.com/images/3Xa97ulSG9tQmL4Ca3wg5FXzrMY.svg" alt="" width="20" height="20">Ember Pepperoni</h3>
+                <p class="item-desc">Spicy pepperoni and melted mozzarella with black olives, sweet peppers, and fresh basil leaves.</p>
+              </div>
+              <div class="item-foot">
+                <p class="item-price">$18</p>
+                <a class="item-order" href="#">ORDER NOW <span class="item-arrow"><svg><use href="#i-arrow"/></svg><svg><use href="#i-arrow"/></svg></span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="newly-slot">
+          <article class="item" data-pizza="1">
+            <img class="item-border" src="https://framerusercontent.com/images/qWn3RyqP5hrdFw27Uxz28d337Ow.svg" alt="" loading="lazy">
+            <img class="item-fill" src="https://framerusercontent.com/images/B2fgopjRfPBelBpVrkbTqCuEA.svg" alt="" loading="lazy">
+            <div class="item-content">
+              <div class="item-head">
+                <h3 class="item-name"><img src="https://framerusercontent.com/images/3Xa97ulSG9tQmL4Ca3wg5FXzrMY.svg" alt="" width="20" height="20">Hearthstone Margherita</h3>
+                <p class="item-desc">Bright tomato sauce, pools of fresh mozzarella, ripe tomato slices, and basil over a blistered crust.</p>
+              </div>
+              <div class="item-foot">
+                <p class="item-price">$17</p>
+                <a class="item-order" href="#">ORDER NOW <span class="item-arrow"><svg><use href="#i-arrow"/></svg><svg><use href="#i-arrow"/></svg></span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="newly-slot">
+          <article class="item" data-pizza="2">
+            <img class="item-border" src="https://framerusercontent.com/images/qWn3RyqP5hrdFw27Uxz28d337Ow.svg" alt="" loading="lazy">
+            <img class="item-fill" src="https://framerusercontent.com/images/B2fgopjRfPBelBpVrkbTqCuEA.svg" alt="" loading="lazy">
+            <div class="item-content">
+              <div class="item-head">
+                <h3 class="item-name"><img src="https://framerusercontent.com/images/3Xa97ulSG9tQmL4Ca3wg5FXzrMY.svg" alt="" width="20" height="20">Garden Stone Supreme</h3>
+                <p class="item-desc">Red onion, sweet peppers, mushrooms, and tomato layered over mozzarella and our house tomato sauce.</p>
+              </div>
+              <div class="item-foot">
+                <p class="item-price">$16</p>
+                <a class="item-order" href="#">ORDER NOW <span class="item-arrow"><svg><use href="#i-arrow"/></svg><svg><use href="#i-arrow"/></svg></span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="newly-right" id="newlyRight">
+      <div class="pizza-stage" id="pizzaStage">
+        <figure class="fill"><img src="https://framerusercontent.com/images/7pZdz8UmD2vVgQSiSYm8E0tc4TA.png?scale-down-to=1024" alt="" loading="lazy"></figure>
+        <div class="pizza-wrap">
+          <div class="pizza-spin" id="pizzaSpin">
+            <img class="is-on" src="https://framerusercontent.com/images/2ugNSGgJgu79pYUFdxTfbSShNhs.png?scale-down-to=1024" alt="Ember Pepperoni" loading="lazy">
+            <img src="https://framerusercontent.com/images/YcsM2Ba5wOIiwt6ltc2EjZqZh0.png?scale-down-to=1024" alt="Hearthstone Margherita" loading="lazy">
+            <img src="https://framerusercontent.com/images/CwtgOTrPgMN4i5TwUdtDeGbv4.png?scale-down-to=1024" alt="Garden Stone Supreme" loading="lazy">
+          </div>
+          <img class="garnish garnish-leaf" src="https://framerusercontent.com/images/CLBHvevS4uB0GZ8UmXMU4Btxjc.svg" alt="" loading="lazy">
+          <img class="garnish garnish-tomato" src="https://framerusercontent.com/images/C0UmP0XoHfmSYrCIWIgCmHbflLw.svg" alt="" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore pizza -->
+  <section class="explore" id="explore">
+    <figure class="fill"><img src="https://framerusercontent.com/images/2hG0hXTAULyzs6JDRmQK0JhU4Lc.png" alt="" loading="lazy"></figure>
+    <figure class="jag jag-top"><img src="https://framerusercontent.com/images/L1xVvXZt3gtK1tyiVlYaUHXL4.svg" alt=""></figure>
+    <div class="explore-inner">
+      <div class="heading heading-explore">
+        <p class="tag tag-light"><i></i>Our Menu</p>
+        <h2 class="h2 light" data-chars>Find the Pie You Have Been Craving</h2>
+      </div>
+      <div class="explore-body">
+        <div class="tabs" role="tablist" aria-label="Pizza categories">
+          <button class="tab is-active" role="tab" aria-selected="true" data-tab="classic"><img src="https://framerusercontent.com/images/GapXqAesC8LaXJRuWtCE67HPJXg.svg" alt="" width="16" height="16"><span>Classic Pizzas</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="signature"><img src="https://framerusercontent.com/images/EF5mYMRIl0HknGlDK1i0VqwSY.svg" alt="" width="16" height="16"><span>House Specials</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="meat"><img src="https://framerusercontent.com/images/98N3gR4U8ZYTMauOvu00nz605H0.svg" alt="" width="16" height="16"><span>Meat Lovers</span></button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="veggie"><img src="https://framerusercontent.com/images/zalaJIoxBVtr8PacnveF4xqpTp4.svg" alt="" width="16" height="16"><span>Veggie Pizzas</span></button>
+        </div>
+        <div class="cards" id="cards"></div>
+      </div>
+    </div>
+  </section>
+
+  <figure class="separator"><img src="https://framerusercontent.com/images/kHred7qIsH9usH44Kkxk4wyrcu8.svg" alt=""></figure>
+
+  <!-- 3D -->
+  <section class="three">
+    <div class="three-canvas" id="three" role="img" aria-label="Stones Oven 3D lettering"></div>
+  </section>
+
+  <!-- Our approach -->
+  <section class="approach">
+    <div class="approach-inner">
+      <div class="heading heading-approach">
+        <p class="tag tag-dark"><i></i>How We Bake</p>
+        <h2 class="h2" data-chars>Three Simple Things We Never Rush</h2>
+      </div>
+      <div class="rows">
+        <article class="row">
+          <div class="row-text">
+            <div class="row-head">
+              <div class="row-title">
+                <h3>Fresh, Simple Toppings</h3>
+                <div class="row-collapse"><p>Good pizza does not need much. We prep our vegetables, cheeses, and meats in the kitchen, then top each pie to order so every flavor stays bright and every slice has a little of everything.</p></div>
+              </div>
+              <p class="row-serial">01</p>
+            </div>
+            <div class="row-collapse row-collapse-btn"><a class="btn btn-red" href="#"><span>Read More</span></a></div>
+          </div>
+          <div class="row-img"><img src="https://framerusercontent.com/images/SFpshwnuiFFDgT04v96T1RQlTQ.png?scale-down-to=1024" alt="Pizza slices in a box beside a paper cup" loading="lazy"></div>
+        </article>
+        <article class="row">
+          <div class="row-text">
+            <div class="row-head">
+              <div class="row-title">
+                <h3>Patient, Hand-Stretched Dough</h3>
+                <div class="row-collapse"><p>We give our dough the time it needs, then stretch every base by hand. That patience builds an airy, chewy center and a crisp golden edge that holds up to the very last bite.</p></div>
+              </div>
+              <p class="row-serial">02</p>
+            </div>
+            <div class="row-collapse row-collapse-btn"><a class="btn btn-red" href="#"><span>Read More</span></a></div>
+          </div>
+          <div class="row-img"><img src="https://framerusercontent.com/images/W4H7kUfUBM5Yo8ZjU414uUTk6XM.png?scale-down-to=1024" alt="A pizza loaded with colorful toppings" loading="lazy"></div>
+        </article>
+        <article class="row">
+          <div class="row-text">
+            <div class="row-head">
+              <div class="row-title">
+                <h3>Baked Right on the Stone</h3>
+                <div class="row-collapse"><p>Hot stone is where the magic happens. It draws moisture from the base, blisters the crust, and melts the cheese evenly, so each pizza comes out crisp underneath and soft on top.</p></div>
+              </div>
+              <p class="row-serial">03</p>
+            </div>
+            <div class="row-collapse row-collapse-btn"><a class="btn btn-red" href="#"><span>Read More</span></a></div>
+          </div>
+          <div class="row-img"><img src="https://framerusercontent.com/images/qUpL2DbQ9BzcvUBcbQLsayuKVI.png?scale-down-to=1024" alt="Pizza with tomato sauce on a wooden board" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <figure class="fill"><img src="https://framerusercontent.com/images/PJM33P2BmmZU71uoyyjN7PzM.png?scale-down-to=2048" alt="" loading="lazy"></figure>
+    <div class="testimonials-mask"></div>
+    <div class="testimonials-inner">
+      <div class="slider" id="slider">
+        <div class="slider-view">
+          <article class="slide">
+            <div class="slide-photo"><img class="slide-bg" src="https://framerusercontent.com/images/NY7MA4hrnLJ3ttxahKMwrdSj3wQ.png" alt="" loading="lazy"><img class="slide-face" src="https://framerusercontent.com/images/SGYx6yqf9dK7um3NmSexlldg4Q.png?scale-down-to=1024" alt="Customer holding a slice of pizza" loading="lazy"></div>
+            <div class="slide-copy"><img class="slide-bg" src="https://framerusercontent.com/images/d6c3gQPAQqHCJDv23Ve9nx3iA.png" alt="" loading="lazy">
+              <div class="slide-text">
+                <div class="slide-top"><img class="slide-quote" src="https://framerusercontent.com/images/VszYocG7aUkz1G6zkRXXWphQ.svg" alt="" loading="lazy"><p>Placeholder review: replace this with a real customer quote from Stones Oven Pizzaria before the site goes live.</p></div>
+                <div class="slide-bottom"><div class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="slide-who"><p class="slide-name">Customer Name</p><p class="slide-place">City</p></div></div>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-photo"><img class="slide-bg" src="https://framerusercontent.com/images/NY7MA4hrnLJ3ttxahKMwrdSj3wQ.png" alt="" loading="lazy"><img class="slide-face" src="https://framerusercontent.com/images/kwBenhbHhtqQoDwFbrm4bpwqOWI.png?scale-down-to=1024" alt="Customer holding a plate" loading="lazy"></div>
+            <div class="slide-copy"><img class="slide-bg" src="https://framerusercontent.com/images/d6c3gQPAQqHCJDv23Ve9nx3iA.png" alt="" loading="lazy">
+              <div class="slide-text">
+                <div class="slide-top"><img class="slide-quote" src="https://framerusercontent.com/images/VszYocG7aUkz1G6zkRXXWphQ.svg" alt="" loading="lazy"><p>Placeholder review: replace this with a real customer quote from Stones Oven Pizzaria before the site goes live.</p></div>
+                <div class="slide-bottom"><div class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="slide-who"><p class="slide-name">Customer Name</p><p class="slide-place">City</p></div></div>
+              </div>
+            </div>
+          </article>
+          <article class="slide">
+            <div class="slide-photo"><img class="slide-bg" src="https://framerusercontent.com/images/NY7MA4hrnLJ3ttxahKMwrdSj3wQ.png" alt="" loading="lazy"><img class="slide-face" src="https://framerusercontent.com/images/GkpSNGGVWKTJ6aoDhHnlPtQUj0.png?scale-down-to=1024" alt="Customer holding a pizza" loading="lazy"></div>
+            <div class="slide-copy"><img class="slide-bg" src="https://framerusercontent.com/images/d6c3gQPAQqHCJDv23Ve9nx3iA.png" alt="" loading="lazy">
+              <div class="slide-text">
+                <div class="slide-top"><img class="slide-quote" src="https://framerusercontent.com/images/VszYocG7aUkz1G6zkRXXWphQ.svg" alt="" loading="lazy"><p>Placeholder review: replace this with a real customer quote from Stones Oven Pizzaria before the site goes live.</p></div>
+                <div class="slide-bottom"><div class="stars" role="img" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><div class="slide-who"><p class="slide-name">Customer Name</p><p class="slide-place">City</p></div></div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <button class="slider-arrow slider-prev" type="button" aria-label="Previous review"><img src="https://framerusercontent.com/images/p5tAXiNpwKLvEBkB7iiDlxE8.svg" alt=""></button>
+        <button class="slider-arrow slider-next" type="button" aria-label="Next review"><img src="https://framerusercontent.com/images/Dx214oFcdxPcbJbegCj6elUs.svg" alt=""></button>
+        <div class="slider-dots">
+          <button type="button" aria-label="Show review 1"><i></i></button>
+          <button type="button" aria-label="Show review 2"><i></i></button>
+          <button type="button" aria-label="Show review 3"><i></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="blog">
+    <div class="heading heading-blog">
+      <p class="tag tag-dark"><i></i>Stories</p>
+      <h2 class="h2" data-chars>Notes and Tips From the Oven</h2>
+    </div>
+    <div class="posts">
+      <a class="post" href="#" data-reveal="up">
+        <img class="post-bg" src="https://framerusercontent.com/images/gRzwkzRfs52foVCyGRBFN5OoFHg.svg" alt="" loading="lazy">
+        <span class="post-img"><img src="https://framerusercontent.com/images/WGM4IVagbZNQG9iAFI0C7Yu5bU.png?scale-down-to=1024" alt="A small pizza beside stacked delivery boxes" loading="lazy"></span>
+        <span class="post-bottom">
+          <span class="post-text">
+            <span class="post-meta"><span>( Kitchen )</span><i></i><time datetime="2026-05-24">May 24, 2026</time></span>
+            <span class="post-title">Why Hot Stone Makes a Better Pizza Crust</span>
+          </span>
+          <span class="post-btn">Read Full Blog</span>
+        </span>
+      </a>
+      <a class="post" href="#" data-reveal="up">
+        <img class="post-bg" src="https://framerusercontent.com/images/gRzwkzRfs52foVCyGRBFN5OoFHg.svg" alt="" loading="lazy">
+        <span class="post-img"><img src="https://framerusercontent.com/images/7VSE5TQeC7i5AyrhXjeRXX1Y.png?scale-down-to=1024" alt="Hands pulling slices from a pizza" loading="lazy"></span>
+        <span class="post-bottom">
+          <span class="post-text">
+            <span class="post-meta"><span>( Tips )</span><i></i><time datetime="2026-04-28">Apr 28, 2026</time></span>
+            <span class="post-title">How to Reheat a Slice the Right Way</span>
+          </span>
+          <span class="post-btn">Read Full Blog</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <figure class="jag jag-cta"><img src="https://framerusercontent.com/images/uQrERpS5Q9rvLvw0w5di2MpD2g.svg" alt=""></figure>
+    <div class="cta-bg"><img src="https://framerusercontent.com/images/To8YAqs7jnyiGwbUttCTTo7Xg.png?scale-down-to=2048" alt="Three friends eating pizza at a table" loading="lazy"></div>
+    <div class="cta-content">
+      <span class="cta-trigger" id="ctaTrigger"></span>
+      <div class="cta-box" id="ctaBox">
+        <img class="cta-crop" src="https://framerusercontent.com/images/3fO4C5C1YLqd4Mc3gjyP7DpZQ.png?scale-down-to=1024" alt="" draggable="false" loading="lazy">
+        <div class="cta-copy">
+          <h2 class="h3">Hungry? Order a Hot Pizza.</h2>
+          <a class="btn btn-red" href="#"><span>Order Now</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <figure class="fill"><img src="https://framerusercontent.com/images/2hG0hXTAULyzs6JDRmQK0JhU4Lc.png" alt="" loading="lazy"></figure>
+  <figure class="jag jag-top"><img src="https://framerusercontent.com/images/L1xVvXZt3gtK1tyiVlYaUHXL4.svg" alt=""></figure>
+  <div class="ticker" data-ticker role="img" aria-label="Stone baked">
+    <ul class="ticker-track">
+      <li>STONE<img src="https://framerusercontent.com/images/2ugNSGgJgu79pYUFdxTfbSShNhs.png?scale-down-to=1024" alt="" loading="lazy">BAKED</li>
+    </ul>
+  </div>
+  <div class="footer-content">
+    <div class="footer-border">
+      <div class="footer-all">
+        <div class="footer-left">
+          <div class="footer-intro">
+            <div class="footer-ask">
+              <h2>Got a Question?</h2>
+              <p>Email us at <a href="mailto:hello@stonesoven.example">hello@stonesoven.example</a><br>or use our <a href="#">contact form</a>.</p>
+            </div>
+            <div class="social">
+              <a href="#" aria-label="X"><img src="https://framerusercontent.com/images/RRtxe6IH2GM5FX47qocsIaOVbDM.svg" alt="" loading="lazy"></a>
+              <a href="#" aria-label="Instagram"><img src="https://framerusercontent.com/images/FMT8ZFmdCbvWyndnYBAq7inHhZ4.svg" alt="" loading="lazy"></a>
+              <a href="#" aria-label="Facebook"><img src="https://framerusercontent.com/images/0pnNajGe5uDj58bBWpL5HXUNOPQ.svg" alt="" loading="lazy"></a>
+              <a href="#" aria-label="LinkedIn"><img src="https://framerusercontent.com/images/LGgNEsPqsD4w1xx3RGuYoQca0.svg" alt="" loading="lazy"></a>
+            </div>
+          </div>
+          <a class="logo footer-logo" href="#" aria-label="Stones Oven Pizzaria home">STONES <svg class="logo-o" aria-hidden="true"><use href="#i-oven"/></svg>VEN.</a>
+        </div>
+        <div class="footer-right">
+          <div class="footer-col footer-main">
+            <h3>Main Pages</h3>
+            <ul>
+              <li><a class="is-current" href="#">Home</a></li>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Menu</a></li>
+              <li><a href="#">Stories</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Order Online</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-legal">
+            <div>
+              <h3>Legal Pages</h3>
+              <ul>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms &amp; Conditions</a></li>
+              </ul>
+            </div>
+            <div class="footer-small">
+              <p>Phone: <a href="tel:+10000000000">(000) 000-0000</a></p>
+              <p><a href="#">Street Address, City, State</a></p>
+            </div>
+          </div>
+          <div class="footer-col footer-schedule">
+            <div>
+              <h3>Schedule</h3>
+              <ul>
+                <li>Mon to Thu: 11 AM – 9 PM</li>
+                <li>Fri to Sat: 11 AM – 11 PM</li>
+                <li>Sun: 12 PM – 8 PM</li>
+              </ul>
+            </div>
+            <div class="footer-small">
+              <p>© 2026 Stones Oven Pizzaria.</p>
+              <p>All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script type="module" src="js/model3d.js"></script>
+</body>
+</html>
