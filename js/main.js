@@ -1,6 +1,6 @@
 (() => {
   const IMG = 'https://framerusercontent.com/images/';
-  const PAPER = IMG + 'pqbPyqZxZhoGvr2tVKXCqn7C25o.png';
+  const PAPER = IMG + 'pqbPyqZxZhoGvr2tVKXCqn7C25o.png?scale-down-to=1024';
   const LEAF = IMG + 'CLBHvevS4uB0GZ8UmXMU4Btxjc.svg';
   const TOMATO = IMG + 'C0UmP0XoHfmSYrCIWIgCmHbflLw.svg';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -22,16 +22,22 @@
   /* Menu overlay */
   const burger = document.getElementById('burger');
   const overlay = document.getElementById('overlay');
+  const overlayImgs = overlay.querySelectorAll('.overlay-images img');
+  // The menu photos are heavy and hidden until the menu opens, so fetch them on first interaction.
+  const loadOverlayImages = () => {
+    overlayImgs.forEach(img => { if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; } });
+  };
   const setMenu = open => {
+    if (open) loadOverlayImages();
     overlay.classList.toggle('is-open', open);
     overlay.setAttribute('aria-hidden', String(!open));
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.classList.toggle('menu-open', open);
   };
+  ['pointerenter', 'pointerdown', 'focus'].forEach(type => burger.addEventListener(type, loadOverlayImages, { once: true }));
   burger.addEventListener('click', () => setMenu(!overlay.classList.contains('is-open')));
   addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-  const overlayImgs = overlay.querySelectorAll('.overlay-images img');
   overlay.querySelectorAll('.overlay-links a').forEach(link => {
     link.addEventListener('mouseenter', () => {
       overlayImgs.forEach((img, i) => img.classList.toggle('is-on', i === +link.dataset.img));
@@ -49,15 +55,20 @@
       clone.setAttribute('aria-hidden', 'true');
       track.append(clone);
     }
-    let x = 0, last = 0, factor = 1, target = 1, visible = false;
-    ticker.addEventListener('mouseenter', () => { target = 0.5; });
-    ticker.addEventListener('mouseleave', () => { target = 1; });
+    let x = 0, last = 0, factor = 1, target = 1, visible = false, loop = 0;
+    // A tap fires mouseenter without a matching leave, so only a real mouse slows the ticker.
+    ticker.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') target = 0.5; });
+    ticker.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') target = 1; });
+    // Measured on resize and font load rather than every frame.
+    const measure = () => { loop = first.offsetWidth + parseFloat(getComputedStyle(track).columnGap) || loop; };
+    measure();
+    new ResizeObserver(measure).observe(first);
+    if (document.fonts) document.fonts.ready.then(measure);
     const step = t => {
       const dt = Math.min((t - last) / 1000, 0.1);
       last = t;
       factor += (target - factor) * Math.min(dt * 6, 1);
-      const loop = first.offsetWidth + parseFloat(getComputedStyle(track).columnGap);
-      x = (x + TICKER_SPEED * factor * dt) % loop;
+      x = loop ? (x + TICKER_SPEED * factor * dt) % loop : 0;
       track.style.transform = `translate3d(${-x}px,0,0)`;
       if (visible) requestAnimationFrame(step);
     };
@@ -228,6 +239,13 @@
       <span class="card-meta"><span class="card-title">${name}</span><span class="card-price">${price}</span></span>
     </a>`;
   const tabs = [...document.querySelectorAll('.tab')];
+  const tabBar = document.querySelector('.tabs');
+  // On a phone the tab row scrolls sideways, so bring the chosen tab to the middle.
+  const centerTab = tab => {
+    if (tabBar.scrollWidth <= tabBar.clientWidth) return;
+    const offset = tab.getBoundingClientRect().left - tabBar.getBoundingClientRect().left + tabBar.scrollLeft;
+    tabBar.scrollTo({ left: offset - (tabBar.clientWidth - tab.offsetWidth) / 2, behavior: reduced ? 'auto' : 'smooth' });
+  };
   const showTab = key => {
     tabs.forEach(t => {
       const on = t.dataset.tab === key;
@@ -235,8 +253,9 @@
       t.setAttribute('aria-selected', String(on));
     });
     cards.innerHTML = MENU[key].map(cardHTML).join('');
+    cards.scrollTo(0, 0);
   };
-  tabs.forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
+  tabs.forEach(t => t.addEventListener('click', () => { showTab(t.dataset.tab); centerTab(t); }));
   showTab('classic');
   // Fetch the other tabs' photos early so switching tabs never shows empty cards.
   new IntersectionObserver((entries, io) => {
@@ -252,14 +271,14 @@
   const slider = document.getElementById('slider');
   const slides = [...slider.querySelectorAll('.slide')];
   const dots = [...slider.querySelectorAll('.slider-dots button')];
-  let current = 0, sliderHover = false, sliderVisible = false, timer;
+  let current = 0, sliderHover = false, sliderVisible = false, swipe = null, timer;
   const renderSlides = (dir = 0) => {
     const n = slides.length;
     slides.forEach((slide, i) => {
       const offset = ((i - current + n + 1) % n) - 1;
       const wrapped = (dir > 0 && offset === 1) || (dir < 0 && offset === -1);
       slide.classList.toggle('no-anim', wrapped || dir === 0);
-      slide.style.transform = `translateX(calc(${offset * 100}% + ${offset * 40}px))`;
+      slide.style.transform = `translateX(calc(${offset * 100}% + ${offset * 40}px + var(--drag, 0px)))`;
       slide.setAttribute('aria-hidden', String(offset !== 0));
     });
     dots.forEach((d, i) => d.classList.toggle('is-on', i === current));
@@ -273,7 +292,7 @@
     clearInterval(timer);
     if (reduced) return;
     timer = setInterval(() => {
-      if (!sliderHover && sliderVisible && !document.hidden) go(1);
+      if (!sliderHover && !swipe && sliderVisible && !document.hidden) go(1);
     }, 3000);
   };
   slider.querySelector('.slider-prev').addEventListener('click', () => go(-1));
@@ -282,20 +301,35 @@
     const dir = i === current ? 0 : ((i - current + slides.length) % slides.length === 1 ? 1 : -1);
     if (dir) go(dir);
   }));
-  slider.addEventListener('mouseenter', () => { sliderHover = true; });
-  slider.addEventListener('mouseleave', () => { sliderHover = false; });
+  // Only a real mouse pauses autoplay; a tap would otherwise leave it paused for good.
+  slider.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') sliderHover = true; });
+  slider.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') sliderHover = false; });
   new IntersectionObserver(([e]) => { sliderVisible = e.isIntersecting; }).observe(slider);
-  let swipeX = null;
+  /* Swipe: the slides follow the finger, then settle on release. A vertical scroll that
+     starts on the slider ends in pointercancel, which must clear the swipe too. */
   const view = slider.querySelector('.slider-view');
   view.addEventListener('pointerdown', e => {
-    if (!isDesktop.matches) swipeX = e.clientX;
+    if (isDesktop.matches || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    swipe = { id: e.pointerId, x: e.clientX, dx: 0 };
   });
-  addEventListener('pointerup', e => {
-    if (swipeX === null) return;
-    const dx = e.clientX - swipeX;
-    swipeX = null;
-    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+  addEventListener('pointermove', e => {
+    if (!swipe || e.pointerId !== swipe.id) return;
+    swipe.dx = e.clientX - swipe.x;
+    if (Math.abs(swipe.dx) > 8) view.classList.add('is-dragging');
+    if (view.classList.contains('is-dragging')) view.style.setProperty('--drag', `${swipe.dx}px`);
   });
+  const endSwipe = commit => {
+    if (!swipe) return;
+    const { dx } = swipe;
+    swipe = null;
+    const moved = view.classList.contains('is-dragging');
+    view.classList.remove('is-dragging');
+    view.style.removeProperty('--drag');
+    if (commit && Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    else if (moved) slides.forEach(s => s.classList.remove('no-anim'));
+  };
+  addEventListener('pointerup', () => endSwipe(true));
+  addEventListener('pointercancel', () => endSwipe(false));
   renderSlides();
   restart();
 
@@ -326,6 +360,20 @@
   };
   box.addEventListener('pointerup', endDrag);
   box.addEventListener('pointercancel', endDrag);
+
+  /* Phone quick actions: shown once the hero is behind you, tucked away at the CTA and footer */
+  const actionBar = document.getElementById('actionBar');
+  const bar = { pastHero: false, ends: new Set() };
+  const syncBar = () => actionBar.classList.toggle('is-on', bar.pastHero && !bar.ends.size);
+  new IntersectionObserver(([e]) => {
+    bar.pastHero = !e.isIntersecting && e.boundingClientRect.bottom < 0;
+    syncBar();
+  }).observe(document.querySelector('.hero'));
+  const endObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) bar.ends.add(e.target); else bar.ends.delete(e.target); });
+    syncBar();
+  });
+  [cta, document.querySelector('.footer')].forEach(el => endObserver.observe(el));
 
   /* Tape ribbons */
   document.querySelectorAll('[data-ribbon]').forEach(track => {
