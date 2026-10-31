@@ -274,8 +274,10 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
 .slide.no-anim { transition: none; }
 .slide-photo, .slide-copy { position: relative; flex: 1 1 50%; min-width: 0; }
 .slide-bg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.slide-photo { display: flex; padding: 30px; }
-.slide-face { position: relative; width: 100%; height: 100%; object-fit: cover; }
+/* The photo is inset with absolute positioning, not sized as a flex child: Safari sizes a
+   percentage-width image from its natural 1024px width, which blew the whole slide up. */
+.slide-photo { --pad: 30px; }
+.slide-face { position: absolute; inset: var(--pad); width: calc(100% - var(--pad) * 2); height: calc(100% - var(--pad) * 2); object-fit: cover; }
 .slide-text { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between; align-items: center; padding: 40px; }
 .slide-top { display: flex; flex-direction: column; align-items: center; gap: 40px; }
 .slide-quote { width: 78px; height: 70px; }
@@ -419,7 +421,7 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
   .testimonials-inner { padding: 100px 40px; }
   .slider { width: 100%; height: auto; aspect-ratio: 929 / 509; }
   .slider-arrow { display: none; }
-  .slide-photo { padding: 24px; }
+  .slide-photo { --pad: 24px; }
   .slide-text { padding: 32px; }
   .slide-top { gap: 24px; }
   .slide-quote { width: 58px; height: 52px; }
@@ -531,8 +533,8 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
 
   .testimonials-inner { padding: 60px 20px; }
   .slider { height: auto; aspect-ratio: auto; }
-  .slider-view { position: relative; inset: auto; display: grid; }
-  .slide { position: relative; inset: auto; grid-area: 1 / 1; flex-direction: column; }
+  .slider-view { position: relative; inset: auto; display: grid; grid-template-columns: minmax(0, 1fr); }
+  .slide { position: relative; inset: auto; grid-area: 1 / 1; min-width: 0; flex-direction: column; }
   .slide-photo { flex: none; height: auto; aspect-ratio: 335 / 380; }
   .slide-copy { flex: 1 0 auto; display: flex; flex-direction: column; min-height: 300px; }
   .slide-text { flex: 1; height: auto; padding: 20px 20px 24px; gap: 28px; }
