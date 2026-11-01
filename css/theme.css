@@ -1,4 +1,4 @@
-/* Palette switch and the alternate gold theme.
+/* Palette switch and the alternate theme.
    Loaded after each page's own stylesheet so these declarations win. */
 
 .theme-switch {
@@ -49,88 +49,72 @@
   .theme-switch, .theme-switch-track, .theme-switch-track i { transition: none; }
 }
 
-/* Gold palette: cream paper, near-black type, gold fills, deep green panels */
+/* Dark gold theme: near-black page, cream type, gold accents, red buttons,
+   deep green panels. Tokens flip, then the surfaces that need a specific
+   colour are set below. */
 [data-theme="gold"] {
-  --red: #d4af37;
+  --red: #a62626;
   --ember: #e5c453;
-  --ink: #0a0a0a;
-  --cream: #f5f3ef;
-  --stone: #e5e3df;
+  --ink: #f5f3ef;
+  --cream: #0a0a0a;
+  --stone: #171717;
   --forest: #0e3618;
-  --gold-ink: #8a6a1e;
-  --muted-gold: #c5a059;
+  --gold: #d4af37;
+  --gold-soft: #e5c453;
+  --gold-muted: #c5a059;
   --cyan: #31c3e0;
 }
 
-[data-theme="gold"] .theme-switch { color: var(--forest); background: rgba(14, 54, 24, .06); box-shadow: inset 0 0 0 1px rgba(14, 54, 24, .2); }
-[data-theme="gold"] .theme-switch[aria-checked="true"] { box-shadow: inset 0 0 0 1px var(--cyan); }
-[data-theme="gold"] .theme-switch:focus-visible { outline-color: var(--forest); }
+[data-theme="gold"] body { background: #0a0a0a; color: #f5f3ef; }
+[data-theme="gold"] .body.muted { color: rgba(245, 243, 239, .7); }
 
-/* Gold is a fill colour; text uses a deeper gold or deep green so it stays readable */
-[data-theme="gold"] .logo,
-[data-theme="gold"] .legal-logo,
-[data-theme="gold"] .legal-tag,
-[data-theme="gold"] .details-script,
-[data-theme="gold"] .item-name,
-[data-theme="gold"] .item-foot,
-[data-theme="gold"] .card-name,
-[data-theme="gold"] .card-link,
+/* Switch in dark surroundings */
+[data-theme="gold"] .theme-switch { color: #f5f3ef; background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .35); }
+[data-theme="gold"] .theme-switch-track { background: rgba(255, 255, 255, .14); }
+[data-theme="gold"] .theme-switch[aria-checked="true"] .theme-switch-track { background: #d4af37; }
+[data-theme="gold"] .theme-switch[aria-checked="true"] .theme-switch-track i { background: #0a0a0a; }
+[data-theme="gold"] .theme-switch:focus-visible { outline-color: #e5c453; }
+
+/* Nav + menu overlay */
+[data-theme="gold"] .logo { color: #d4af37; }
+[data-theme="gold"] .nav-wrap.is-filled .nav-bar { background: rgba(10, 10, 10, .94); box-shadow: 0 2px 14px rgba(0, 0, 0, .55); }
+[data-theme="gold"] .overlay { background: #0a0a0a; }
 [data-theme="gold"] .overlay-links a.is-current,
-[data-theme="gold"] .overlay-links a:hover,
-[data-theme="gold"] .hero .tag { color: var(--gold-ink); }
+[data-theme="gold"] .overlay-links a:hover { color: #d4af37; }
+[data-theme="gold"] .overlay-copy { color: rgba(245, 243, 239, .55); }
+[data-theme="gold"] .burger { background: #131313; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .35); }
 
-[data-theme="gold"] .ticket-kicker,
-[data-theme="gold"] .ticket-link,
-[data-theme="gold"] .detail-kicker,
-[data-theme="gold"] .card-kicker,
-[data-theme="gold"] .legal-toc h2,
-[data-theme="gold"] .legal-body a,
-[data-theme="gold"] .card a:not(.btn):not(.call-number),
-[data-theme="gold"] .visit-hours li.is-today,
-[data-theme="gold"] .legal-toc a:hover,
-[data-theme="gold"] .legal-back:hover,
-[data-theme="gold"] .legal-foot a:hover,
-[data-theme="gold"] .foot a:hover,
-[data-theme="gold"] .top-back:hover { color: var(--forest); }
-
-/* Deep green replaces the near-black panels */
-[data-theme="gold"] .details-foot,
-[data-theme="gold"] .oven-panel,
-[data-theme="gold"] .ribbon-a,
-[data-theme="gold"] .legal-cta,
-[data-theme="gold"] .call-card,
-[data-theme="gold"] .btn-dark,
-[data-theme="gold"] .burger,
-[data-theme="gold"] .tab::before,
-[data-theme="gold"] .testimonials-mask { background: var(--forest); }
-[data-theme="gold"] .post:hover .post-btn { background: var(--forest); }
-
-/* Dark labels on gold fills, and hover fills that stay legible */
-[data-theme="gold"] .btn,
-[data-theme="gold"] .btn-red,
-[data-theme="gold"] .post-btn,
-[data-theme="gold"] .legal-body a.btn { color: #0a0a0a; }
-[data-theme="gold"] .btn:hover span,
-[data-theme="gold"] .btn-red:hover span,
-[data-theme="gold"] .btn-outline:hover span,
-[data-theme="gold"] .btn-white:hover span,
-[data-theme="gold"] .btn-dark:hover span { color: var(--forest); }
-
-/* The backgrounds switch too: a gold wash over the hero, deep green over the
-   dark photo sections, and a fresh cream page behind everything else. */
-[data-theme="gold"] .hero .fill img,
-[data-theme="gold"] .behind .fill img,
-[data-theme="gold"] .explore .fill img,
-[data-theme="gold"] .testimonials .fill img,
-[data-theme="gold"] .footer .fill img,
-[data-theme="gold"] .cta-bg img { filter: sepia(.9) saturate(1.6) hue-rotate(-12deg); }
-
+/* Hero */
+[data-theme="gold"] .hero .fill img { filter: sepia(.75) saturate(1.2) hue-rotate(-10deg) brightness(.5); }
 [data-theme="gold"] .hero .fill::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(212, 175, 55, .28), rgba(255, 255, 255, .06) 55%, rgba(197, 160, 89, .24));
+  background: linear-gradient(180deg, rgba(10, 10, 10, .55), rgba(10, 10, 10, .2) 45%, rgba(10, 10, 10, .7));
 }
+[data-theme="gold"] .hero .tag { color: #d4af37; }
+[data-theme="gold"] .hero .tag i { border-color: #d4af37; }
+[data-theme="gold"] .hero .tag i::after { background: #d4af37; }
+[data-theme="gold"] .hero .h1 { color: #f5f3ef; }
+[data-theme="gold"] .hero .ticker-track li { color: #d4af37; }
+[data-theme="gold"] .hero-card-meta { color: #f5f3ef; }
+
+/* Section labels, rules and headings */
+[data-theme="gold"] .tag-dark { color: #d4af37; }
+[data-theme="gold"] .tag-dark i { border-color: #d4af37; }
+[data-theme="gold"] .tag-dark i::after { background: #d4af37; }
+[data-theme="gold"] .separator img { filter: brightness(.12) saturate(0); }
+[data-theme="gold"] .jag img { filter: brightness(.14) saturate(.4); }
+
+/* Ribbons */
+[data-theme="gold"] .ribbon-a { background: #0e3618; color: #f5f3ef; }
+[data-theme="gold"] .ribbon-b { background: #d4af37; color: #0a0a0a; }
+
+/* Dark photo sections */
+[data-theme="gold"] .behind .fill img,
+[data-theme="gold"] .explore .fill img,
+[data-theme="gold"] .testimonials .fill img,
+[data-theme="gold"] .footer .fill img { filter: sepia(.55) saturate(1.1) brightness(.38); }
 [data-theme="gold"] .behind .fill::after,
 [data-theme="gold"] .explore .fill::after,
 [data-theme="gold"] .testimonials .fill::after,
@@ -138,13 +122,166 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(14, 54, 24, .58);
+  background: rgba(10, 10, 10, .45);
 }
+[data-theme="gold"] .footer .fill::after { background: rgba(14, 54, 24, .62); }
 
-[data-theme="gold"] body { background: #f5f3ef; }
-[data-theme="gold"] .nav-wrap.is-filled .nav-bar { background: #fff; box-shadow: 0 2px 12px rgba(14, 54, 24, .14); }
-[data-theme="gold"] .hero .ticker-track li { color: var(--gold-ink); }
-[data-theme="gold"] .details,
-[data-theme="gold"] .newly,
-[data-theme="gold"] .approach,
-[data-theme="gold"] .blog { background: #f5f3ef; }
+/* Newly added: the paper cards stay light, so keep their text dark */
+[data-theme="gold"] .item-name,
+[data-theme="gold"] .item-foot { color: #8a6a1e; }
+[data-theme="gold"] .item-desc { color: #1d1a16; }
+
+/* Explore tabs and cards */
+[data-theme="gold"] .tab { background: rgba(255, 255, 255, .06); color: #f5f3ef; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .3); }
+[data-theme="gold"] .tab::before { background: #d4af37; }
+[data-theme="gold"] .tab.is-active span,
+[data-theme="gold"] .tab:hover span { color: #0a0a0a; }
+[data-theme="gold"] .tab img { filter: invert(1) sepia(1) saturate(3) hue-rotate(3deg) brightness(1.1); }
+[data-theme="gold"] .card-paper { opacity: 0; }
+[data-theme="gold"] .card-default { opacity: .92; }
+[data-theme="gold"] .card:hover .card-default { opacity: .92; }
+[data-theme="gold"] .card-pizza,
+[data-theme="gold"] .card-leaf,
+[data-theme="gold"] .card-tomato { display: none; }
+[data-theme="gold"] .card-media { box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .35); }
+[data-theme="gold"] .card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 10, .1), rgba(10, 10, 10, .78));
+}
+[data-theme="gold"] .card-name,
+[data-theme="gold"] .card-link { color: #e5c453; z-index: 1; }
+[data-theme="gold"] .card-title { color: #f5f3ef; }
+[data-theme="gold"] .card-price { color: #d4af37; }
+[data-theme="gold"] .card:hover .card-meta { color: #e5c453; }
+
+/* Approach */
+[data-theme="gold"] .approach { background: #0a0a0a; }
+[data-theme="gold"] .row::after,
+[data-theme="gold"] .row:last-child::before { border-top-color: rgba(245, 243, 239, .16); }
+[data-theme="gold"] .row-serial { color: rgba(245, 243, 239, .55); }
+[data-theme="gold"] .row-title p { color: rgba(245, 243, 239, .72); }
+
+/* Testimonials: the slide cards keep their light paper, so keep their text dark */
+[data-theme="gold"] .testimonials-mask { background: #0a0a0a; opacity: .55; }
+[data-theme="gold"] .slide-top p,
+[data-theme="gold"] .slide-name { color: #1d1a16; }
+[data-theme="gold"] .slide-place { color: #3a3a3a; }
+
+/* Blog */
+[data-theme="gold"] .post-bg { display: none; }
+[data-theme="gold"] .post { background: #121212; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .28); }
+[data-theme="gold"] .post-title { color: #f5f3ef; }
+[data-theme="gold"] .post-meta { color: rgba(245, 243, 239, .6); }
+[data-theme="gold"] .post-meta i { background: #d4af37; }
+[data-theme="gold"] .post-btn { background: #a62626; color: #f5f3ef; }
+[data-theme="gold"] .post:hover .post-btn { background: #d4af37; color: #0a0a0a; }
+
+/* CTA */
+[data-theme="gold"] .cta-bg img { filter: sepia(.6) brightness(.4); }
+[data-theme="gold"] .cta-copy .h3 { color: #f5f3ef; }
+
+/* Footer */
+[data-theme="gold"] .footer-logo { color: #d4af37; }
+[data-theme="gold"] .footer-col li a.is-current,
+[data-theme="gold"] .footer-col li a:hover { color: #e5c453; }
+
+/* Tickets and visit */
+[data-theme="gold"] .ticket { background: #121212; color: #f5f3ef; }
+[data-theme="gold"] .ticket-kicker { color: #d4af37; border-bottom-color: rgba(245, 243, 239, .22); }
+[data-theme="gold"] .ticket-note { color: rgba(245, 243, 239, .6); }
+[data-theme="gold"] .ticket-link { color: #e5c453; }
+[data-theme="gold"] .visit-hours li.is-today { background: rgba(212, 175, 55, .14); color: #e5c453; }
+[data-theme="gold"] .map-placeholder { background: repeating-conic-gradient(#171717 0 25%, #101010 0 50%) 0 0 / 28px 28px; }
+[data-theme="gold"] .map-placeholder span { background: #d4af37; color: #0a0a0a; }
+[data-theme="gold"] .oven-panel { background: #0e3618; color: #f5f3ef; }
+
+/* Details */
+[data-theme="gold"] .details-lede { color: rgba(245, 243, 239, .72); }
+[data-theme="gold"] .details-script { color: #d4af37; }
+[data-theme="gold"] .detail-card { background: #121212; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .28); }
+[data-theme="gold"] .detail-card h3 { color: #f5f3ef; }
+[data-theme="gold"] .detail-kicker { color: #d4af37; }
+[data-theme="gold"] .detail-list { color: rgba(245, 243, 239, .76); }
+[data-theme="gold"] .detail-list li::before { background: #d4af37; }
+[data-theme="gold"] .details-foot { background: #0e3618; color: #f5f3ef; }
+
+/* Buttons: red fills with cream type, gold on hover */
+[data-theme="gold"] .btn { background: #a62626; color: #f5f3ef; }
+[data-theme="gold"] .btn::before { background: #d4af37; }
+[data-theme="gold"] .btn:hover span { color: #0a0a0a; }
+[data-theme="gold"] .btn-red { background: #a62626; color: #f5f3ef; }
+[data-theme="gold"] .btn-white { background: #f5f3ef; color: #0a0a0a; }
+[data-theme="gold"] .btn-white::before { background: #d4af37; }
+[data-theme="gold"] .btn-white:hover span { color: #0a0a0a; }
+[data-theme="gold"] .btn-light { background: #f5f3ef; color: #0a0a0a; }
+[data-theme="gold"] .btn-light::before { background: #0e3618; }
+[data-theme="gold"] .btn-light:hover span { color: #f5f3ef; }
+[data-theme="gold"] .btn-outline { background: transparent; color: #f5f3ef; box-shadow: inset 0 0 0 1px rgba(212, 175, 55, .55); }
+[data-theme="gold"] .btn-outline:hover span { color: #0a0a0a; }
+[data-theme="gold"] .btn-dark { background: #131313; color: #f5f3ef; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .3); }
+[data-theme="gold"] .btn-dark::before { background: #d4af37; }
+[data-theme="gold"] .btn-dark:hover span { color: #0a0a0a; }
+[data-theme="gold"] .legal-body a.btn { color: #f5f3ef; }
+
+[data-theme="gold"] .action-bar { background: rgba(10, 10, 10, .94); box-shadow: 0 -2px 14px rgba(0, 0, 0, .5); }
+
+/* Legal pages */
+[data-theme="gold"] .legal-top { background: rgba(10, 10, 10, .94); border-bottom-color: rgba(245, 243, 239, .12); }
+[data-theme="gold"] .legal-logo { color: #d4af37; }
+[data-theme="gold"] .legal-back { color: #f5f3ef; border-bottom-color: rgba(245, 243, 239, .4); }
+[data-theme="gold"] .legal-back:hover { color: #e5c453; border-color: #e5c453; }
+[data-theme="gold"] .legal-tag { color: #d4af37; }
+[data-theme="gold"] .legal-tag i { border-color: #d4af37; }
+[data-theme="gold"] .legal-tag i::after { background: #d4af37; }
+[data-theme="gold"] .legal-head h1 { color: #f5f3ef; }
+[data-theme="gold"] .legal-meta { color: rgba(245, 243, 239, .55); }
+[data-theme="gold"] .legal-toc { background: #121212; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .28); }
+[data-theme="gold"] .legal-toc h2 { color: #d4af37; }
+[data-theme="gold"] .legal-toc a { color: rgba(245, 243, 239, .75); }
+[data-theme="gold"] .legal-toc a:hover { color: #e5c453; }
+[data-theme="gold"] .legal-body section { border-top-color: rgba(245, 243, 239, .12); }
+[data-theme="gold"] .legal-body h2,
+[data-theme="gold"] .legal-body h3 { color: #f5f3ef; }
+[data-theme="gold"] .legal-body p,
+[data-theme="gold"] .legal-body li { color: rgba(245, 243, 239, .8); }
+[data-theme="gold"] .legal-body strong { color: #f5f3ef; }
+[data-theme="gold"] .legal-body a { color: #e5c453; }
+[data-theme="gold"] .legal-note { background: #121212; border-left-color: #d4af37; box-shadow: none; }
+[data-theme="gold"] .legal-cta { background: #0e3618; color: #f5f3ef; }
+[data-theme="gold"] .legal-cta p { color: rgba(245, 243, 239, .8); }
+[data-theme="gold"] .legal-foot { border-top-color: rgba(245, 243, 239, .12); }
+[data-theme="gold"] .legal-foot-inner { color: rgba(245, 243, 239, .55); }
+[data-theme="gold"] .legal-foot a { color: #f5f3ef; }
+[data-theme="gold"] .legal-foot a:hover { color: #e5c453; }
+
+/* Contact page */
+[data-theme="gold"] .top { background: rgba(10, 10, 10, .94); border-bottom-color: rgba(245, 243, 239, .12); }
+[data-theme="gold"] .top-back { color: #f5f3ef; border-bottom-color: rgba(245, 243, 239, .4); }
+[data-theme="gold"] .top-back:hover { color: #e5c453; border-color: #e5c453; }
+[data-theme="gold"] .hero h1 { color: #f5f3ef; }
+[data-theme="gold"] .hero > p:not(.tag) { color: rgba(245, 243, 239, .7); }
+[data-theme="gold"] .card { background: #121212; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .28); }
+[data-theme="gold"] .card h2 { color: #f5f3ef; }
+[data-theme="gold"] .card p,
+[data-theme="gold"] .card li { color: rgba(245, 243, 239, .78); }
+[data-theme="gold"] .card-kicker { color: #d4af37; }
+[data-theme="gold"] .card li::before { background: #d4af37; }
+[data-theme="gold"] .card a:not(.btn):not(.call-number) { color: #e5c453; }
+[data-theme="gold"] .call-card { background: #0e3618; color: #f5f3ef; }
+[data-theme="gold"] .call-number { color: #e5c453; }
+[data-theme="gold"] .hours-row { border-bottom-color: rgba(245, 243, 239, .16); }
+[data-theme="gold"] .hours-row span { color: rgba(245, 243, 239, .7); }
+[data-theme="gold"] .map { background: repeating-conic-gradient(#171717 0 25%, #101010 0 50%) 0 0 / 28px 28px; border-color: rgba(197, 160, 89, .28); }
+[data-theme="gold"] .map b { color: #f5f3ef; }
+[data-theme="gold"] .map span { color: rgba(245, 243, 239, .6); }
+[data-theme="gold"] .foot { border-top-color: rgba(245, 243, 239, .12); }
+[data-theme="gold"] .foot-inner { color: rgba(245, 243, 239, .55); }
+[data-theme="gold"] .foot a { color: #f5f3ef; }
+[data-theme="gold"] .foot a:hover { color: #e5c453; }
+
+/* The hero cards and the stat panels are dark in this theme too */
+[data-theme="gold"] .hero-card { background: #121212; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .3); }
+[data-theme="gold"] .stat { background: #121212; box-shadow: inset 0 0 0 1px rgba(197, 160, 89, .28); }
+[data-theme="gold"] .stat-bg { display: none; }
