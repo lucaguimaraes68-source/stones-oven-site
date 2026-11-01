@@ -1,0 +1,93 @@
+:root {
+  --red: #ca2f06;
+  --ink: #1d1a16;
+  --cream: #fff6ed;
+  --stone: #ebe7de;
+  --kanit: "Kanit", sans-serif;
+  --display: "Bricolage Grotesque", sans-serif;
+  --mono: "Geist Mono", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--kanit); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding: 0; }
+a { color: inherit; }
+img { display: block; }
+
+/* Top bar */
+.legal-top { position: sticky; top: 0; z-index: 5; background: rgba(255, 246, 237, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(29, 26, 22, .1); }
+.legal-top-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 24px; }
+.legal-logo { color: var(--red); font: 700 22px/1 var(--kanit); letter-spacing: -.03em; text-decoration: none; white-space: nowrap; }
+.legal-back { display: inline-flex; align-items: center; gap: 8px; font: 500 13px/1 var(--mono); letter-spacing: -.26px; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(29, 26, 22, .35); padding-bottom: 4px; }
+@media (hover: hover) { .legal-back:hover { color: var(--red); border-color: var(--red); } }
+
+/* Head */
+.legal-head { max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; padding: 64px 24px 36px; }
+.legal-tag { display: inline-flex; align-items: center; gap: 8px; font: 500 13px/1 var(--mono); letter-spacing: -.26px; text-transform: uppercase; color: var(--red); }
+.legal-tag i { width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--red); position: relative; }
+.legal-tag i::after { content: ""; position: absolute; inset: 2px; border-radius: 50%; background: var(--red); }
+.legal-head h1 { font: 700 56px/1.02 var(--display); letter-spacing: -2px; text-transform: uppercase; }
+.legal-meta { font: 400 14px/22px var(--kanit); letter-spacing: -.28px; color: rgba(29, 26, 22, .58); }
+
+/* Body + contents */
+.legal-wrap { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 56px; align-items: start; padding: 0 24px 96px; }
+.legal-toc { position: sticky; top: 86px; display: flex; flex-direction: column; gap: 8px; padding: 22px; border-radius: 18px; background: #fff; box-shadow: 0 6px 20px rgba(29, 26, 22, .06); }
+.legal-toc h2 { font: 500 12px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+.legal-toc a { display: block; font: 400 14px/20px var(--kanit); letter-spacing: -.28px; color: rgba(29, 26, 22, .72); text-decoration: none; padding: 3px 0; }
+@media (hover: hover) { .legal-toc a:hover { color: var(--red); } }
+
+.legal-body { max-width: 760px; }
+.legal-body section { padding: 30px 0; border-top: 1px solid rgba(29, 26, 22, .1); }
+.legal-body section:first-child { border-top: 0; padding-top: 0; }
+.legal-body h2 { font: 600 27px/33px var(--display); letter-spacing: -.6px; margin-bottom: 14px; scroll-margin-top: 96px; }
+.legal-body h3 { font: 600 17px/24px var(--kanit); letter-spacing: -.34px; margin: 22px 0 8px; }
+.legal-body p, .legal-body li { font: 400 16px/27px var(--kanit); letter-spacing: -.2px; color: rgba(29, 26, 22, .82); }
+.legal-body p { margin-bottom: 14px; }
+.legal-body p:last-child { margin-bottom: 0; }
+.legal-body ul { margin: 0 0 14px; padding-left: 20px; list-style: disc; }
+.legal-body li { margin-bottom: 6px; }
+.legal-body a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.legal-body strong { font-weight: 600; color: var(--ink); }
+.legal-note { margin-top: 10px; padding: 18px 20px; border-radius: 16px; background: #fff; border-left: 4px solid var(--red); box-shadow: 0 6px 20px rgba(29, 26, 22, .05); }
+.legal-note p { margin: 0; font-size: 15px; line-height: 25px; }
+
+/* Call to action */
+.legal-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 20px; margin-top: 24px; padding: 24px; border-radius: 20px; background: var(--ink); color: var(--cream); }
+.legal-cta p { margin: 0; font: 400 15px/24px var(--kanit); letter-spacing: -.3px; color: rgba(255, 246, 237, .8); }
+.legal-cta .btn { flex: none; }
+.btn { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 15px 26px; border-radius: 70px; overflow: hidden; background: var(--red); color: #fff; font: 500 15px/16px var(--mono); letter-spacing: -.3px; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
+.btn::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 0; background: var(--cream); transition: height .4s cubic-bezier(.22, 1, .36, 1); }
+.btn span { position: relative; z-index: 1; transition: color .3s; }
+@media (hover: hover) { .btn:hover::before { height: 100%; } .btn:hover span { color: var(--red); } }
+
+/* Footer */
+.legal-foot { border-top: 1px solid rgba(29, 26, 22, .1); padding: 28px 24px 44px; }
+.legal-foot-inner { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; font: 400 13px/20px var(--mono); letter-spacing: -.26px; text-transform: uppercase; color: rgba(29, 26, 22, .6); }
+.legal-foot-links { display: flex; flex-wrap: wrap; gap: 20px; }
+.legal-foot a { color: var(--ink); text-decoration: none; }
+@media (hover: hover) { .legal-foot a:hover { color: var(--red); } }
+
+@media (max-width: 899.98px) {
+  .legal-head { padding: 44px 20px 28px; gap: 12px; }
+  .legal-head h1 { font-size: 38px; line-height: 1.05; letter-spacing: -1.2px; }
+  .legal-wrap { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 0 20px 64px; }
+  .legal-toc { position: static; order: -1; padding: 18px; }
+  .legal-body section { padding: 24px 0; }
+  .legal-body h2 { font-size: 23px; line-height: 29px; }
+  .legal-cta { padding: 20px; }
+  .legal-cta .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn::before, .btn span { transition: none; }
+}
+
+@media print {
+  .legal-top, .legal-toc, .legal-foot, .legal-cta { display: none; }
+  body { background: #fff; }
+  .legal-wrap { display: block; padding: 0; }
+  .legal-body { max-width: none; }
+  .legal-body a { color: inherit; }
+}
