@@ -49,6 +49,7 @@ img { display: block; }
 .legal-body ul { margin: 0 0 14px; padding-left: 20px; list-style: disc; }
 .legal-body li { margin-bottom: 6px; }
 .legal-body a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.legal-body a.btn { color: #fff; text-decoration: none; }
 .legal-body strong { font-weight: 600; color: var(--ink); }
 .legal-note { margin-top: 10px; padding: 18px 20px; border-radius: 16px; background: #fff; border-left: 4px solid var(--red); box-shadow: 0 6px 20px rgba(29, 26, 22, .05); }
 .legal-note p { margin: 0; font-size: 15px; line-height: 25px; }
