@@ -477,7 +477,8 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
   .hero-bottom { flex-direction: column-reverse; gap: 32px; padding: 0 20px; }
   .hero-cards { flex: none; width: 100%; }
   .hero-cards::before { padding-top: calc((100% - 20px) * .5636 + 56px); }
-  .hero-text { flex: none; width: 100%; gap: 20px; }
+  .hero-text { flex: none; width: 100%; gap: 20px; align-items: center; text-align: center; }
+  .hero-copy { width: 100%; align-items: center; text-align: center; }
   .hero-card-meta { font-size: 20px; line-height: 20px; letter-spacing: -.4px; }
   .separator { height: 60px; }
 
