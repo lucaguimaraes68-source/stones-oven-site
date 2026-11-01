@@ -211,16 +211,16 @@
   /* Explore tabs */
   const MENU = {
     classic: [
-      ['Four Cheese Pull', '$17', '6IueieBH5I7tAUe7V8bo3fxJw.png', 'aDhjTebJLF4kFgiur4Rb2dmc.jpg'],
-      ['Fresh Mozzarella', '$16', 'ao6TLXgmeUj6tAsQEPCGQsWPk4.png', 'KPB0sUOeKgynOIx812bchnMXTw.png'],
-      ['Pepperoni & Ham', '$18', '6S9zGnkbghidjG9R4UmRruBS1dQ.png', 'HkR5BifDLPe7PxC66kVpO38UUs.png']
+      ['Margherita', '$16', '6IueieBH5I7tAUe7V8bo3fxJw.png', 'aDhjTebJLF4kFgiur4Rb2dmc.jpg'],
+      ['Pepperoni', '$17', 'ao6TLXgmeUj6tAsQEPCGQsWPk4.png', 'KPB0sUOeKgynOIx812bchnMXTw.png'],
+      ['Four Cheese', '$18', '6S9zGnkbghidjG9R4UmRruBS1dQ.png', 'HkR5BifDLPe7PxC66kVpO38UUs.png']
     ],
     signature: [
-      ['Smoky BBQ Chicken', '$19', 'CwtgOTrPgMN4i5TwUdtDeGbv4.png', 'GRmdIjJZLVB06etQbZ9IyCZ7HpI.png'],
-      ['The Stone Supreme', '$20', 'YcsM2Ba5wOIiwt6ltc2EjZqZh0.png', 'waRs6hqwPbV0L6NfQ5hkSWIQ.jpg']
+      ['Quattro Formaggi', '$19', 'CwtgOTrPgMN4i5TwUdtDeGbv4.png', 'GRmdIjJZLVB06etQbZ9IyCZ7HpI.png'],
+      ['Prosciutto e Rucola', '$20', 'YcsM2Ba5wOIiwt6ltc2EjZqZh0.png', 'waRs6hqwPbV0L6NfQ5hkSWIQ.jpg']
     ],
-    meat: [['The Butcher', '$21', 'oqNzyU7EwACYAdBnYX1NKi5bIWg.png', 'KlcuaF8rSo6lW27LcftVcbRj8C8.png']],
-    veggie: [['Market Veggie', '$17', 'aqlLbbYV5QVHHIjETA9yfqdyquc.png', '1Oz70YlHtt77pekZ5a25C0HrR4.png']]
+    meat: [['Meat Lovers Supreme', '$21', 'oqNzyU7EwACYAdBnYX1NKi5bIWg.png', 'KlcuaF8rSo6lW27LcftVcbRj8C8.png']],
+    veggie: [['Veggie Giardino', '$17', 'aqlLbbYV5QVHHIjETA9yfqdyquc.png', '1Oz70YlHtt77pekZ5a25C0HrR4.png']]
   };
   const cards = document.getElementById('cards');
   const cardHTML = ([name, price, pizza, photo]) => `
@@ -393,10 +393,11 @@
   });
 
   /* Opening hours: the single source for the footer and the visit section.
-     The kitchen serves 5 PM to 10 PM every day, in Eastern time. Both are
+     Tuesday to Thursday 11 AM to 8 PM, Friday 11 AM to 9 PM, Saturday and
+     Sunday 4 PM to 8/9 PM, closed Monday, in Eastern time. Both values are
      24-hour, and a closed day is null. Index 0 is Sunday. */
   const TIME_ZONE = 'America/New_York';
-  const HOURS = [[17, 22], [17, 22], [17, 22], [17, 22], [17, 22], [17, 22], [17, 22]];
+  const HOURS = [[16, 20], null, [11, 20], [11, 20], [11, 20], [11, 21], [16, 21]];
   const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const formatHour = hour => {
     const whole = Math.floor(hour);

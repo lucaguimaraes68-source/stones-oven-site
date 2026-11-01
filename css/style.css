@@ -627,7 +627,7 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
 .map-placeholder { display: flex; align-items: center; justify-content: center; height: 96px; margin-top: 14px; border-radius: 8px; background: repeating-conic-gradient(var(--stone) 0 25%, #f7f2e8 0 50%) 0 0 / 28px 28px; }
 .map-placeholder span { padding: 6px 10px; border-radius: 40px; background: #fff; font: 500 12px/14px var(--mono); text-transform: uppercase; }
 
-/* Whistle Stop details */
+/* Restaurant details */
 .details { position: relative; padding: 0 120px 160px; overflow: clip; }
 .details-inner { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 44px; }
 .heading-details .h2 { max-width: 760px; }
