@@ -115,3 +115,36 @@
 [data-theme="gold"] .btn-outline:hover span,
 [data-theme="gold"] .btn-white:hover span,
 [data-theme="gold"] .btn-dark:hover span { color: var(--forest); }
+
+/* The backgrounds switch too: a gold wash over the hero, deep green over the
+   dark photo sections, and a fresh cream page behind everything else. */
+[data-theme="gold"] .hero .fill img,
+[data-theme="gold"] .behind .fill img,
+[data-theme="gold"] .explore .fill img,
+[data-theme="gold"] .testimonials .fill img,
+[data-theme="gold"] .footer .fill img,
+[data-theme="gold"] .cta-bg img { filter: sepia(.9) saturate(1.6) hue-rotate(-12deg); }
+
+[data-theme="gold"] .hero .fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(212, 175, 55, .28), rgba(255, 255, 255, .06) 55%, rgba(197, 160, 89, .24));
+}
+[data-theme="gold"] .behind .fill::after,
+[data-theme="gold"] .explore .fill::after,
+[data-theme="gold"] .testimonials .fill::after,
+[data-theme="gold"] .footer .fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(14, 54, 24, .58);
+}
+
+[data-theme="gold"] body { background: #f5f3ef; }
+[data-theme="gold"] .nav-wrap.is-filled .nav-bar { background: #fff; box-shadow: 0 2px 12px rgba(14, 54, 24, .14); }
+[data-theme="gold"] .hero .ticker-track li { color: var(--gold-ink); }
+[data-theme="gold"] .details,
+[data-theme="gold"] .newly,
+[data-theme="gold"] .approach,
+[data-theme="gold"] .blog { background: #f5f3ef; }
