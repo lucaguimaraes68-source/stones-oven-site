@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://framerusercontent.com">
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Geist+Mono:wght@400;500&family=Geist:wght@500&family=Instrument+Serif:ital@0;1&family=Inter:wght@700&family=Italianno&family=Kanit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="css/theme.css">
+<script>document.documentElement.classList.add('js');try{if(localStorage.getItem('piubello-theme')==='gold')document.documentElement.dataset.theme='gold'}catch(e){}</script>
 </head>
 <body>
 
@@ -28,6 +29,10 @@
   <header class="nav-bar">
     <a class="logo" href="#" aria-label="Piú Bello home">PIÚ BELLO</a>
     <div class="nav-actions">
+      <button class="theme-switch" type="button" role="switch" aria-checked="false" data-theme-switch aria-label="Switch to the gold colours">
+        <span class="theme-switch-track" aria-hidden="true"><i></i></span>
+        <span class="theme-switch-label">Gold</span>
+      </button>
       <a class="btn btn-white nav-cta" href="contact.html"><span>Contact Us</span></a>
       <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="overlay">
         <i class="bar bar-top"></i><i class="bar bar-mid"></i><i class="bar bar-bot"></i>
@@ -587,6 +592,7 @@
   <a class="btn btn-red" href="tel:+17726665632"><span>Call Now</span></a>
 </nav>
 
+<script src="js/theme.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,117 @@
+/* Palette switch and the alternate gold theme.
+   Loaded after each page's own stylesheet so these declarations win. */
+
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  padding: 6px 10px 6px 6px;
+  border-radius: 70px;
+  background: rgba(29, 26, 22, .06);
+  box-shadow: inset 0 0 0 1px rgba(29, 26, 22, .14);
+  font: 500 11px/1 var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color .3s, box-shadow .3s;
+}
+.theme-switch-track {
+  position: relative;
+  width: 38px;
+  height: 20px;
+  border-radius: 70px;
+  background: rgba(29, 26, 22, .18);
+  transition: background-color .3s;
+}
+.theme-switch-track i {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--red);
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), background-color .3s;
+}
+.theme-switch[aria-checked="true"] .theme-switch-track { background: #0e3618; }
+.theme-switch[aria-checked="true"] .theme-switch-track i { transform: translateX(18px); background: #e5c453; }
+.theme-switch:focus-visible { outline: 2px solid #0a0a0a; outline-offset: 3px; }
+.top-actions { display: flex; align-items: center; gap: 14px; }
+
+@media (max-width: 899.98px) {
+  .theme-switch { padding: 6px; }
+  .theme-switch-label { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-switch, .theme-switch-track, .theme-switch-track i { transition: none; }
+}
+
+/* Gold palette: cream paper, near-black type, gold fills, deep green panels */
+[data-theme="gold"] {
+  --red: #d4af37;
+  --ember: #e5c453;
+  --ink: #0a0a0a;
+  --cream: #f5f3ef;
+  --stone: #e5e3df;
+  --forest: #0e3618;
+  --gold-ink: #8a6a1e;
+  --muted-gold: #c5a059;
+  --cyan: #31c3e0;
+}
+
+[data-theme="gold"] .theme-switch { color: var(--forest); background: rgba(14, 54, 24, .06); box-shadow: inset 0 0 0 1px rgba(14, 54, 24, .2); }
+[data-theme="gold"] .theme-switch[aria-checked="true"] { box-shadow: inset 0 0 0 1px var(--cyan); }
+[data-theme="gold"] .theme-switch:focus-visible { outline-color: var(--forest); }
+
+/* Gold is a fill colour; text uses a deeper gold or deep green so it stays readable */
+[data-theme="gold"] .logo,
+[data-theme="gold"] .legal-logo,
+[data-theme="gold"] .legal-tag,
+[data-theme="gold"] .details-script,
+[data-theme="gold"] .item-name,
+[data-theme="gold"] .item-foot,
+[data-theme="gold"] .card-name,
+[data-theme="gold"] .card-link,
+[data-theme="gold"] .overlay-links a.is-current,
+[data-theme="gold"] .overlay-links a:hover,
+[data-theme="gold"] .hero .tag { color: var(--gold-ink); }
+
+[data-theme="gold"] .ticket-kicker,
+[data-theme="gold"] .ticket-link,
+[data-theme="gold"] .detail-kicker,
+[data-theme="gold"] .card-kicker,
+[data-theme="gold"] .legal-toc h2,
+[data-theme="gold"] .legal-body a,
+[data-theme="gold"] .card a:not(.btn):not(.call-number),
+[data-theme="gold"] .visit-hours li.is-today,
+[data-theme="gold"] .legal-toc a:hover,
+[data-theme="gold"] .legal-back:hover,
+[data-theme="gold"] .legal-foot a:hover,
+[data-theme="gold"] .foot a:hover,
+[data-theme="gold"] .top-back:hover { color: var(--forest); }
+
+/* Deep green replaces the near-black panels */
+[data-theme="gold"] .details-foot,
+[data-theme="gold"] .oven-panel,
+[data-theme="gold"] .ribbon-a,
+[data-theme="gold"] .legal-cta,
+[data-theme="gold"] .call-card,
+[data-theme="gold"] .btn-dark,
+[data-theme="gold"] .burger,
+[data-theme="gold"] .tab::before,
+[data-theme="gold"] .testimonials-mask { background: var(--forest); }
+[data-theme="gold"] .post:hover .post-btn { background: var(--forest); }
+
+/* Dark labels on gold fills, and hover fills that stay legible */
+[data-theme="gold"] .btn,
+[data-theme="gold"] .btn-red,
+[data-theme="gold"] .post-btn,
+[data-theme="gold"] .legal-body a.btn { color: #0a0a0a; }
+[data-theme="gold"] .btn:hover span,
+[data-theme="gold"] .btn-red:hover span,
+[data-theme="gold"] .btn-outline:hover span,
+[data-theme="gold"] .btn-white:hover span,
+[data-theme="gold"] .btn-dark:hover span { color: var(--forest); }

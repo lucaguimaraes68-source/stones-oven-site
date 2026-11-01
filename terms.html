@@ -12,13 +12,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Geist+Mono:wght@400;500&family=Italianno&family=Kanit:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/legal.css">
+<link rel="stylesheet" href="css/theme.css">
+<script>try{if(localStorage.getItem('piubello-theme')==='gold')document.documentElement.dataset.theme='gold'}catch(e){}</script>
 </head>
 <body>
 
 <header class="legal-top">
   <div class="legal-top-inner">
     <a class="legal-logo" href="index.html" aria-label="Piú Bello home">PIÚ BELLO</a>
-    <a class="legal-back" href="index.html">&larr; Back to the site</a>
+    <div class="top-actions">
+      <button class="theme-switch" type="button" role="switch" aria-checked="false" data-theme-switch aria-label="Switch to the gold colours">
+        <span class="theme-switch-track" aria-hidden="true"><i></i></span>
+        <span class="theme-switch-label">Gold</span>
+      </button>
+      <a class="legal-back" href="index.html">&larr; Back to the site</a>
+    </div>
   </div>
 </header>
 
@@ -194,5 +202,6 @@
   </div>
 </footer>
 
+<script src="js/theme.js"></script>
 </body>
 </html>
