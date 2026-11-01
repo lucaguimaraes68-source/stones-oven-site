@@ -145,11 +145,14 @@
   .menu-hero .ticker { height: 150px; }
   .menu-hero .ticker-track li { font-size: 120px; }
   .menu-hero .ticker-track { gap: 100px; }
-  .menu-intro { gap: 20px; padding: 0 20px; }
-  .menu-intro-head { gap: 12px; }
+  .menu-intro { gap: 20px; padding: 0 20px; text-align: center; }
+  .menu-intro-head { gap: 12px; align-items: center; }
+  .menu-intro-side { align-items: center; }
   .menu-intro-side .body { font-size: 16px; line-height: 25px; letter-spacing: -.32px; }
   .menu-intro-side, .menu-intro-actions { width: 100%; }
+  .menu-intro-actions { justify-content: center; }
   .menu-intro-actions .btn { width: 100%; }
+  .menu-status { justify-content: center; }
 
   /* A full-width strip at the top; it moves up when the header tucks away */
   .menu-nav { top: 84px; height: auto; padding: 0; transition: top .35s var(--spring); }
