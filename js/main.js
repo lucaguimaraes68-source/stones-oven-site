@@ -393,10 +393,10 @@
   });
 
   /* Opening hours: the single source for the footer and the visit section.
-     Sample hours and a placeholder time zone until the client confirms the real
-     ones. Times are 24-hour, and a closed day is null. Index 0 is Sunday. */
+     The kitchen serves 5 PM to 10 PM every day, in Eastern time. Both are
+     24-hour, and a closed day is null. Index 0 is Sunday. */
   const TIME_ZONE = 'America/New_York';
-  const HOURS = [[12, 20], [11, 21], [11, 21], [11, 21], [11, 21], [11, 23], [11, 23]];
+  const HOURS = [[17, 22], [17, 22], [17, 22], [17, 22], [17, 22], [17, 22], [17, 22]];
   const DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const formatHour = hour => {
     const whole = Math.floor(hour);

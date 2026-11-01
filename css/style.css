@@ -602,6 +602,7 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
 .ticket-kicker { padding-bottom: 12px; border-bottom: 1px dashed rgba(29, 26, 22, .35); font: 500 14px/15.4px var(--mono); letter-spacing: -.28px; text-transform: uppercase; color: var(--red); }
 .ticket-line-big { padding-top: 14px; font: 500 22px/28px var(--kanit); letter-spacing: -.44px; }
 .ticket-link { display: inline-block; padding-top: 8px; font: 500 14px/18px var(--mono); letter-spacing: -.28px; text-decoration: underline; overflow-wrap: anywhere; color: var(--red); }
+.ticket-note { padding-top: 8px; font: 400 14px/20px var(--kanit); letter-spacing: -.28px; color: rgba(29, 26, 22, .62); }
 
 /* Visit */
 .visit { position: relative; display: flex; flex-direction: column; align-items: center; gap: 60px; padding: 40px 120px 200px; overflow: clip; }
@@ -626,9 +627,26 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
 .map-placeholder { display: flex; align-items: center; justify-content: center; height: 96px; margin-top: 14px; border-radius: 8px; background: repeating-conic-gradient(var(--stone) 0 25%, #f7f2e8 0 50%) 0 0 / 28px 28px; }
 .map-placeholder span { padding: 6px 10px; border-radius: 40px; background: #fff; font: 500 12px/14px var(--mono); text-transform: uppercase; }
 
+/* Whistle Stop details */
+.details { position: relative; padding: 0 120px 160px; overflow: clip; }
+.details-inner { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 44px; }
+.heading-details .h2 { max-width: 760px; }
+.details-lede { max-width: 800px; text-align: center; font: 400 18px/30px var(--kanit); letter-spacing: -.36px; color: rgba(29, 26, 22, .7); }
+.details-grid { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.detail-card { display: flex; flex-direction: column; gap: 14px; padding: 30px 26px; border-radius: 24px; background: #fff; box-shadow: 0 6px 20px rgba(29, 26, 22, .06); }
+.detail-kicker { font: 500 13px/15px var(--mono); letter-spacing: -.26px; text-transform: uppercase; color: var(--red); }
+.detail-card h3 { font: 600 22px/26px var(--kanit); letter-spacing: -.44px; text-transform: uppercase; }
+.detail-list { display: flex; flex-direction: column; gap: 10px; font: 400 16px/23px var(--kanit); letter-spacing: -.32px; color: rgba(29, 26, 22, .78); }
+.detail-list li { position: relative; padding-left: 18px; }
+.detail-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+.details-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; width: 100%; padding: 24px 30px; border-radius: 24px; background: var(--ink); color: var(--cream); }
+.details-foot p { font: 400 16px/26px var(--kanit); letter-spacing: -.32px; }
+
 /* New sections: tablet */
 @media (max-width: 1439.98px) {
   .visit { gap: 40px; padding: 20px 40px 140px; }
+  .details { padding: 0 40px 130px; }
+  .details-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .heading-visit { gap: 24px; }
   .visit-grid { grid-template-columns: minmax(0, 1fr); }
   .oven-panel { min-height: 0; aspect-ratio: 16 / 10; }
@@ -653,6 +671,13 @@ body.menu-open .nav-bar { background: transparent; box-shadow: none; }
   .ribbon-track { font-size: 15px; }
   .ribbon-track span { gap: 14px; padding-right: 14px; }
   .ribbon-track svg { width: 16px; height: 16px; }
+
+  .details { padding: 0 20px 100px; }
+  .details-inner { gap: 32px; }
+  .details-lede { font-size: 16px; line-height: 27px; }
+  .details-grid { grid-template-columns: minmax(0, 1fr); }
+  .details-foot { flex-direction: column; align-items: flex-start; padding: 22px 20px; }
+  .details-foot .btn { width: 100%; }
 }
 
 /* Swipe */
