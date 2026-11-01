@@ -1,6 +1,5 @@
 :root {
   --red: #ca2f06;
-  --blue: #1f4fd8;
   --ink: #1d1a16;
   --cream: #fff6ed;
   --stone: #ebe7de;
@@ -72,8 +71,6 @@ picture { display: contents; }
 .btn-white { background: #fff; color: var(--ink); }
 .btn-white::before { background: var(--red); }
 @media (hover: hover) { .btn-white:hover span { color: #fff; } }
-.btn-blue { background: var(--blue); color: #fff; }
-.btn-blue::before { background: var(--ink); }
 
 /* Nav */
 .nav-wrap { position: fixed; top: 30px; left: 0; right: 0; z-index: 10; display: flex; justify-content: center; padding: 0 50px; pointer-events: none; }
